@@ -54,7 +54,7 @@ function App() {
         }
         return newProgress
       })
-    }, 50)
+    }, 150)
   }
 
   const handleReset = () => {
@@ -102,7 +102,9 @@ function App() {
         <div className="result-container">
           {showResult && (
             <>
-              <h2 className="result-text">you are gay</h2>
+              <h2 className="result-text">
+                {number === '777' ? 'jungkook sucks' : number === '111' ? 'you suck' : number === '222' ? 'fuck you' : 'you are gay'}
+              </h2>
               <button onClick={handleReset} className="reset-button">
                 Try Again
               </button>
