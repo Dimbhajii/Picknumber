@@ -16,6 +16,29 @@
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+}
+
 .input-container {
   width: 100%;
   max-width: 400px;
@@ -29,6 +52,20 @@
   border-radius: 8px;
   text-align: center;
   box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .number-input {
+    padding: 0.875rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .number-input {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
 }
 
 .number-input:focus {
@@ -51,6 +88,25 @@
   cursor: pointer;
   transition: background-color 0.3s;
   font-weight: 500;
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .read-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .read-button {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    min-width: 160px;
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 .read-button:hover:not(:disabled) {
@@ -80,6 +136,13 @@
   position: relative;
 }
 
+@media (max-width: 480px) {
+  .loading-bar {
+    height: 25px;
+    border-radius: 12.5px;
+  }
+}
+
 .loading-progress {
   height: 100%;
   background-color: #4caf50;
@@ -103,6 +166,20 @@
   font-weight: 500;
   margin: 0;
   animation: blink 1s ease-in-out infinite;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .loading-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-text {
+    font-size: 0.9rem;
+  }
 }
 
 @keyframes blink {
@@ -139,6 +216,20 @@
   background: radial-gradient(circle, #ff6b6b 0%, #ffd93d 30%, #ff6b6b 60%, transparent 100%);
   border-radius: 50%;
   animation: explode 1.5s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+  .explosion {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .explosion {
+    width: 120px;
+    height: 120px;
+  }
 }
 
 @keyframes explode {
@@ -187,6 +278,24 @@
   gap: 2rem;
   animation: fadeIn 0.5s ease-in;
   min-height: 200px;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .result-container {
+    gap: 1.5rem;
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .result-container {
+    gap: 1rem;
+    min-height: 150px;
+    padding: 0 0.5rem;
+  }
 }
 
 @keyframes fadeIn {
@@ -209,6 +318,21 @@
   animation: bounce 0.6s ease-in-out;
   position: relative;
   z-index: 20;
+  padding: 0 1rem;
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .result-text {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .result-text {
+    font-size: 1.75rem;
+    padding: 0 0.75rem;
+  }
 }
 
 @keyframes bounce {
@@ -230,6 +354,25 @@
   cursor: pointer;
   transition: background-color 0.3s;
   font-weight: 500;
+  min-width: 150px;
+}
+
+@media (max-width: 768px) {
+  .reset-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reset-button {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.9rem;
+    min-width: 130px;
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 .reset-button:hover {
