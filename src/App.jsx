@@ -8,6 +8,7 @@ function App() {
   const [showResult, setShowResult] = useState(false)
   const [progress, setProgress] = useState(0)
   const [loadingText, setLoadingText] = useState('reading your mind....')
+  const [resultMessage, setResultMessage] = useState('')
 
   const loadingMessages = [
     'reading your mind....',
@@ -15,8 +16,22 @@ function App() {
     'reading nothing at this point'
   ]
 
+  const resultMessages = [
+    'jungkook sucks',
+    'you suck',
+    'fuck you',
+    'you are gay',
+    'I love Nadim',
+    'I love dimbhaji',
+    'i love short sexy nadim'
+  ]
+
   const handleReadMind = () => {
     if (!number) return
+    
+    // Pick a random result message
+    const randomMessage = resultMessages[Math.floor(Math.random() * resultMessages.length)]
+    setResultMessage(randomMessage)
     
     setIsLoading(true)
     setShowExplosion(false)
@@ -103,7 +118,7 @@ function App() {
           {showResult && (
             <>
               <h2 className="result-text">
-                {number === '777' ? 'jungkook sucks' : number === '111' ? 'you suck' : number === '222' ? 'fuck you' : 'you are gay'}
+                {resultMessage}
               </h2>
               <button onClick={handleReset} className="reset-button">
                 Try Again
