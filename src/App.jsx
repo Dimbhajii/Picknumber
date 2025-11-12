@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 function App() {
@@ -9,6 +9,8 @@ function App() {
   const [progress, setProgress] = useState(0)
   const [loadingText, setLoadingText] = useState('reading your mind....')
   const [resultMessage, setResultMessage] = useState('')
+  const [showHiddenMessage, setShowHiddenMessage] = useState(false)
+  const keySequenceRef = useRef([])
 
   const loadingMessages = [
     'reading your mind....',
@@ -25,6 +27,39 @@ function App() {
     'I love dimbhaji',
     'i love short sexy nadim'
   ]
+
+  // Listen for key sequence "1234" and "4321"
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      const key = e.key
+      
+      // Only track number keys
+      if (key >= '0' && key <= '9') {
+        keySequenceRef.current.push(key)
+        
+        // Keep only last 4 keys
+        if (keySequenceRef.current.length > 4) {
+          keySequenceRef.current.shift()
+        }
+        
+        // Check for "1234"
+        if (keySequenceRef.current.join('') === '1234') {
+          setShowHiddenMessage(true)
+        }
+        
+        // Check for "4321"
+        if (keySequenceRef.current.join('') === '4321') {
+          setShowHiddenMessage(false)
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyPress)
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [])
 
   const handleReadMind = () => {
     if (!number) return
@@ -130,6 +165,12 @@ function App() {
               <div className="explosion"></div>
             </div>
           )}
+        </div>
+      )}
+
+      {showHiddenMessage && (
+        <div className="hidden-message">
+          <h2 className="result-text">you are gay</h2>
         </div>
       )}
     </div>
