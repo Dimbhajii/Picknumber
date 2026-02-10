@@ -11,6 +11,7 @@ function App() {
   const [resultMessage, setResultMessage] = useState('')
   const [showHiddenMessage, setShowHiddenMessage] = useState(false)
   const keySequenceRef = useRef([])
+  const lastResultTimeRef = useRef(null)
 
   const loadingMessages = [
     'reading your mind....',
@@ -57,10 +58,15 @@ function App() {
 
   const handleReadMind = () => {
     if (!number) return
-    
-    // Pick a random result message
-    const randomMessage = resultMessages[Math.floor(Math.random() * resultMessages.length)]
-    setResultMessage(randomMessage)
+
+    // Check if trying again within 10 seconds
+    const now = Date.now()
+    if (lastResultTimeRef.current && (now - lastResultTimeRef.current) < 10000) {
+      setResultMessage('you are still a gay hahaha')
+    } else {
+      const randomMessage = resultMessages[Math.floor(Math.random() * resultMessages.length)]
+      setResultMessage(randomMessage)
+    }
     
     setIsLoading(true)
     setShowExplosion(false)
@@ -92,6 +98,7 @@ function App() {
           // Show result after explosion animation
           setTimeout(() => {
             setShowResult(true)
+            lastResultTimeRef.current = Date.now()
           }, 1500)
           
           return 100
