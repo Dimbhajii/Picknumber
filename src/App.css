@@ -1,0 +1,392 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.title {
+  color: #333;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+}
+
+.input-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.number-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .number-input {
+    padding: 0.875rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .number-input {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+.number-input:focus {
+  outline: none;
+  border-color: #646cff;
+}
+
+.number-input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.read-button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background-color: #d3d3d3;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 500;
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .read-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .read-button {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    min-width: 160px;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.read-button:hover:not(:disabled) {
+  background-color: #c0c0c0;
+}
+
+.read-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.loading-container {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.loading-bar {
+  width: 100%;
+  height: 30px;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (max-width: 480px) {
+  .loading-bar {
+    height: 25px;
+    border-radius: 12.5px;
+  }
+}
+
+.loading-progress {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 15px;
+  transition: width 0.1s linear;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.loading-text {
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  animation: blink 1s ease-in-out infinite;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .loading-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-text {
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.explosion-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  z-index: 10;
+}
+
+.explosion {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #ff6b6b 0%, #ffd93d 30%, #ff6b6b 60%, transparent 100%);
+  border-radius: 50%;
+  animation: explode 1.5s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+  .explosion {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .explosion {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(5);
+    opacity: 0;
+  }
+}
+
+.explosion::before,
+.explosion::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff6b6b 0%, transparent 70%);
+  animation: explode 1.5s ease-out forwards;
+}
+
+.explosion::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+  animation-delay: 0.1s;
+}
+
+.explosion::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+  animation-delay: 0.2s;
+}
+
+.result-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  animation: fadeIn 0.5s ease-in;
+  min-height: 200px;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .result-container {
+    gap: 1.5rem;
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .result-container {
+    gap: 1rem;
+    min-height: 150px;
+    padding: 0 0.5rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ff6b6b;
+  margin: 0;
+  text-align: center;
+  animation: bounce 0.6s ease-in-out;
+  position: relative;
+  z-index: 20;
+  padding: 0 1rem;
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .result-text {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .result-text {
+    font-size: 1.75rem;
+    padding: 0 0.75rem;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.reset-button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  background-color: #646cff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 500;
+  min-width: 150px;
+}
+
+@media (max-width: 768px) {
+  .reset-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reset-button {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.9rem;
+    min-width: 130px;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.reset-button:hover {
+  background-color: #535bf2;
+}
+
+.hidden-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease-in;
+}
